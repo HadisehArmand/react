@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import Main from "./Main";
 import add_admin from "../refresh";
 import getUser from "../getUser";
-
+add_admin();
+getUser();
 const Login = () => {
-  add_admin();
-  getUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [main, setMain] = useState(
@@ -16,16 +15,21 @@ const Login = () => {
   const [isLogin, setIsLogin] = useState(
     !(JSON.parse(localStorage.getItem("islogin")) === true)
   );
+  console.log(main);
+  console.log(isLogin);
 
-  const retrievedObjectLG = JSON.parse(localStorage.getItem("users"));
+  // const retrievedObjectLG = JSON.parse(localStorage.getItem("users"));
 
   useEffect(() => {
-    setIsLogin(JSON.parse(localStorage.getItem("islogin")) === true);
-    setMain(JSON.parse(localStorage.getItem("islogin")) === true);
+    // setIsLogin(JSON.parse(localStorage.getItem("islogin")) === true);
+    // setMain(JSON.parse(localStorage.getItem("islogin")) === true);
   }, []);
 
   const checkuser = () => {
     if (email !== "" && password !== "") {
+      console.log("toshe");
+      console.log(typeof admin_username);
+      console.log(typeof email);
       if (email === admin_username && password === admin_password) {
         alert("login success !");
         getUser();
@@ -82,7 +86,7 @@ const Login = () => {
                   className="btn-bt"
                   type="button"
                   value="Login"
-                  onClick={checkuser}
+                  onClick={() => checkuser()}
                 />
               </div>
             </div>

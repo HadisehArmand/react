@@ -18,7 +18,7 @@ const Main = (props) => {
   };
 
   useEffect(() => {
-    getUser();
+    // getUser();
   }, []);
 
   return (
